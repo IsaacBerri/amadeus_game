@@ -12,5 +12,10 @@ export const routes: Routes = [
     {
         path: 'explore',
         loadComponent: () => import('./pages/explore/explore.component')
+    },
+    {
+        path: '',
+        redirectTo: 'form',
+        pathMatch: 'full'
     }
 ];

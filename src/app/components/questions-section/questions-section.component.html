@@ -1,1 +1,32 @@
-<p>questions-section works!</p>
+<section class="questions-section">
+  <h3 class="title">Pick a destination type</h3>
+  <p class="description">
+    Choose the option that best describes your ideal travel destination
+  </p>
+  <div class="options-container">
+    <app-input-response
+      labelValue="City"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+    <app-input-response
+      labelValue="Beach"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+    <app-input-response
+      labelValue="Mountain"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+    <app-input-response
+      labelValue="Countryside"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+  </div>
+  <section class="btn-container">
+    <app-button buttonText="Previous Question"/>
+    <app-button buttonText="Next Question"/>
+  </section>
+</section>
