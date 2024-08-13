@@ -1,12 +1,14 @@
 <nav class="navbar">
-    <button class="theme-toggle">🌓 <span class="small-text">Voyage Vista</span></button>
+    <picture class="navbar-logo">
+      <img src="https://i.postimg.cc/C5sZswNG/amadeus-logo.png" alt="amadeus-logo">
+    </picture>
     <ul class="navbar-menu">
-      <li><a routerLink="form" >Travel</a></li>
-      <li><a routerLink="explore">Explore</a></li>
-      <li><a routerLink="about">About</a></li>
+      <li routerLinkActive="active"><a routerLink="form">Travel</a></li>
+      <li routerLinkActive="active"><a routerLink="explore" >Explore</a></li>
+      <li routerLinkActive="active"><a routerLink="about" >About</a></li>
     </ul>
     <div class="navbar-brand">
-      <img src="path-to-avatar.png" alt="Avatar" class="avatar">
+      <span class="clarity--avatar-solid"></span>
     </div>
   </nav>
   
