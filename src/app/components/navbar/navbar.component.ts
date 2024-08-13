@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
-  imports: [],
+  imports:[RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  standalone: true,
+  styleUrl: "./navbar.component.scss"
 })
 export class NavbarComponent {
+  isDarkTheme = false;
 
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+  }
 }

@@ -8,7 +8,16 @@
     box-sizing: border-box
 }
 
+:root {
+    --navbar-bg-color: #ffffff;
+    --navbar-text-color: #000000;
+  }
+
 body{
     font-family: 'Plus Jakarta Sans', sans-serif;
     height: 100vh;
 }
+body.dark-theme {
+    --navbar-bg-color: #121C22;
+    --navbar-text-color: #ffffff;
+  }
