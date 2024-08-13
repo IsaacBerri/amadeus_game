@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuestionsControllerService } from '@services/questions-controller.service';
 
 @Component({
   selector: 'app-progress-bar',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './progress-bar.component.scss'
 })
 export class ProgressBarComponent {
-
+  constructor(public QuestionsController: QuestionsControllerService) {}
+  totalQuestions = this.QuestionsController.questions.length
 }

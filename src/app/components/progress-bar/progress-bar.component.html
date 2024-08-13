@@ -1,7 +1,7 @@
 <section class="content">
-  <h5 class="progress-text">Question 1 of 4</h5>
+  <h5 class="progress-text">Question {{QuestionsController.questionIndex + 1}} of {{totalQuestions}}</h5>
   <div>
-    <progress class="progress-bar" id="bar" max="4" value="1">Question 1</progress>
+    <progress class="progress-bar" id="bar" max="{{totalQuestions}}" value="{{QuestionsController.questionIndex + 1}}">Question 1</progress>
   </div>
 </section>
 
