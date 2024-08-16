@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input({ required: true }) buttonText!: string;
+  @Input() buttonFunction!: () => void;
 }

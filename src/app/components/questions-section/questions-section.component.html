@@ -1,29 +1,29 @@
 <section class="questions-section" #questionsSection>
   <div class="light"></div>
-  <h3 class="title">Pick a destination type</h3>
+  <h3 class="title">{{questions[questionsController.questionIndex].title}}</h3>
   <p class="description">
-    Choose the option that best describes your ideal travel destination
+    {{questions[questionsController.questionIndex].text}}
   </p>
   <div class="options-container">
     <app-input-response
-      labelValue="City"
+      labelValue="{{questions[questionsController.questionIndex].options[0].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
     <app-input-response
-      labelValue="Beach"
+      labelValue="{{questions[questionsController.questionIndex].options[1].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
     <app-input-response
-      labelValue="Mountain"
+      labelValue="{{questions[questionsController.questionIndex].options[2].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
   </div>
   <section class="btn-container">
-    <app-button buttonText="Previous Question"/>
-    <app-button buttonText="Next Question"/>
+    <app-button buttonText="Previous Question" [buttonFunction]="previousQuestion"/>
+    <app-button buttonText="Next Question" [buttonFunction]="nextQuestion"/>
   </section>
 </section>
 
