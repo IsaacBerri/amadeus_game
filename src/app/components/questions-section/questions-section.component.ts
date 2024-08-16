@@ -1,4 +1,4 @@
-  import { Component, inject } from '@angular/core';
+  import { Component, ElementRef, ViewChild, AfterViewInit, inject } from '@angular/core';
   import { QuestionsControllerService } from '@services/questions-controller.service';
   import { ButtonComponent } from '@utils/button/button.component';
   import { InputResponseComponent } from '@utils/input-response/input-response.component';
@@ -8,20 +8,31 @@
     standalone: true,
     imports: [InputResponseComponent, ButtonComponent],
   templateUrl: './questions-section.component.html',
-    styleUrl: './questions-section.component.scss',
-  })
-  export class QuestionsSectionComponent {
-    constructor(public QuestionsController: QuestionsControllerService) {}
-    questions = this.QuestionsController.questions;
+  styleUrls: ['./questions-section.component.scss'],
+})
+export class QuestionsSectionComponent implements AfterViewInit {
+  @ViewChild('questionsSection') questionsSection!: ElementRef;
 
-    nextQuestion = () => {
-      this.QuestionsController.nextQuestion();
-    };
-    previousQuestion = () => {
-      this.QuestionsController.previousQuestion();
-    };
+  selectedOption!: any;
 
-    selectedOption!: any;
+  ngAfterViewInit() {
+    const container = this.questionsSection.nativeElement;
+    const light = container.querySelector('.light');
+
+    container.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      light.style.left = `${x}px`;
+      light.style.top = `${y}px`;
+      light.style.opacity = 1;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      light.style.opacity = 0;
+    });
+  }
 
     onOptionChange(option: string): void {
       if (this.selectedOption === option) {
@@ -30,6 +41,8 @@
         this.selectedOption = option;
       }
 
-      console.log(option);
-    }
+    console.log(option);
   }
+}
+
+
