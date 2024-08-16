@@ -1,19 +1,35 @@
-  import { Component, ElementRef, ViewChild, AfterViewInit, inject } from '@angular/core';
-  import { QuestionsControllerService } from '@services/questions-controller.service';
-  import { ButtonComponent } from '@utils/button/button.component';
-  import { InputResponseComponent } from '@utils/input-response/input-response.component';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+  inject,
+} from '@angular/core';
+import { QuestionsControllerService } from '@services/questions-controller.service';
+import { ButtonComponent } from '@utils/button/button.component';
+import { InputResponseComponent } from '@utils/input-response/input-response.component';
 
-  @Component({
-    selector: 'app-questions-section',
-    standalone: true,
-    imports: [InputResponseComponent, ButtonComponent],
+@Component({
+  selector: 'app-questions-section',
+  standalone: true,
+  imports: [InputResponseComponent, ButtonComponent],
   templateUrl: './questions-section.component.html',
   styleUrls: ['./questions-section.component.scss'],
 })
 export class QuestionsSectionComponent implements AfterViewInit {
   @ViewChild('questionsSection') questionsSection!: ElementRef;
 
+  questionsController = inject(QuestionsControllerService);
+  questions = this.questionsController.questions;
   selectedOption!: any;
+
+  previousQuestion = () => {
+    this.questionsController.previousQuestion();
+  }
+
+  nextQuestion = () => {
+    this.questionsController.nextQuestion();
+  }
 
   ngAfterViewInit() {
     const container = this.questionsSection.nativeElement;
@@ -34,15 +50,13 @@ export class QuestionsSectionComponent implements AfterViewInit {
     });
   }
 
-    onOptionChange(option: string): void {
-      if (this.selectedOption === option) {
-        this.selectedOption = null;
-      } else {
-        this.selectedOption = option;
-      }
+  onOptionChange(option: string): void {
+    if (this.selectedOption === option) {
+      this.selectedOption = null;
+    } else {
+      this.selectedOption = option;
+    }
 
     console.log(option);
   }
 }
-
-

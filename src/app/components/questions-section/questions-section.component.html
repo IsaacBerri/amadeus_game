@@ -1,22 +1,22 @@
 <section class="questions-section" #questionsSection>
   <div class="light"></div>
-  <h3 class="title">Pick a destination type</h3>
+  <h3 class="title">{{questions[questionsController.questionIndex].title}}</h3>
   <p class="description">
-    {{questions[QuestionsController.questionIndex].questionHero}}
+    {{questions[questionsController.questionIndex].text}}
   </p>
   <div class="options-container">
     <app-input-response
-      labelValue="{{questions[QuestionsController.questionIndex].options[0].value}}"
+      labelValue="{{questions[questionsController.questionIndex].options[0].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
     <app-input-response
-      labelValue="{{questions[QuestionsController.questionIndex].options[1].value}}"
+      labelValue="{{questions[questionsController.questionIndex].options[1].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
     <app-input-response
-      labelValue="{{questions[QuestionsController.questionIndex].options[2].value}}"
+      labelValue="{{questions[questionsController.questionIndex].options[2].value}}"
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
