@@ -4,7 +4,7 @@
   <p class="description">
     {{questions[questionsController.questionIndex].text}}
   </p>
-  <div class="options-container">
+  <form class="options-container" #optionsContainer>
     <app-input-response
       labelValue="{{questions[questionsController.questionIndex].options[0].value}}"
       [selectedOption]="selectedOption"
@@ -20,7 +20,7 @@
       [selectedOption]="selectedOption"
       (selectedOptionChange)="onOptionChange($event)"
     />
-  </div>
+  </form>
   <section class="btn-container">
     <app-button buttonText="Previous Question" [buttonFunction]="previousQuestion"/>
     <app-button buttonText="Next Question" [buttonFunction]="nextQuestion"/>

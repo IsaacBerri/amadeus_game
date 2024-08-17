@@ -18,18 +18,31 @@ import { InputResponseComponent } from '@utils/input-response/input-response.com
 })
 export class QuestionsSectionComponent implements AfterViewInit {
   @ViewChild('questionsSection') questionsSection!: ElementRef;
-
+  @ViewChild('optionsContainer') optionsContainer!: ElementRef;
   questionsController = inject(QuestionsControllerService);
   questions = this.questionsController.questions;
   selectedOption!: any;
 
   previousQuestion = () => {
     this.questionsController.previousQuestion();
+    this.checkedOption();
   }
 
   nextQuestion = () => {
     this.questionsController.nextQuestion();
+    this.checkedOption();
   }
+
+  checkedOption = () => {
+    for (let i = 0; i < this.optionsContainer.nativeElement.children.length; i++) {
+      setTimeout(() => {
+        if (this.questionsController.responseClient.includes(this.optionsContainer.nativeElement[i].name)) {
+          this.selectedOption = this.optionsContainer.nativeElement[i].name
+        }
+      }, 10)
+    }
+  }
+
 
   ngAfterViewInit() {
     const container = this.questionsSection.nativeElement;
@@ -57,6 +70,6 @@ export class QuestionsSectionComponent implements AfterViewInit {
       this.selectedOption = option;
     }
 
-    console.log(option);
+    this.questionsController.addResponse(option);
   }
 }

@@ -1,5 +1,5 @@
 <label class="cyberpunk-input" for=`checkbox-{{labelValue}}`>
-    <input type="checkbox" class="cyberpunk-checkbox" id=`checkbox-{{labelValue}}` (change)="onCheckboxChange()" [checked]="selectedOption === labelValue">
+    <input type="checkbox" class="cyberpunk-checkbox" name={{labelValue}} id=`checkbox-{{labelValue}}` (change)="onCheckboxChange()" [checked]="selectedOption === labelValue">
     {{labelValue}}
 </label>
 
