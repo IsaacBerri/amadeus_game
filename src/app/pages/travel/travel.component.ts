@@ -3,14 +3,14 @@ import { CarrouselImgComponent } from '@components/carrousel-img/carrousel-img.c
 import { ProgressBarComponent } from '@components/progress-bar/progress-bar.component';
 import { QuestionsSectionComponent } from '@components/questions-section/questions-section.component';
 @Component({
-  selector: 'app-form',
+  selector: 'app-travel',
   standalone: true,
   imports: [
     QuestionsSectionComponent,
     ProgressBarComponent,
     CarrouselImgComponent,
   ],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+  templateUrl: './travel.component.html',
+  styleUrl: './travel.component.scss',
 })
-export default class FormComponent {}
+export default class TravelComponent {}
