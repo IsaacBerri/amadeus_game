@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: () => import('@pages/explore/explore.component')
     },
     {
+        path: 'travels/destinations',
+        loadComponent: () => import('@pages/destinations/destinations.component')
+    },
+    {
         path: '',
         redirectTo: 'travels',
         pathMatch: 'full'
