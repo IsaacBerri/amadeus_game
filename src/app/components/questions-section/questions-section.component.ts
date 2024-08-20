@@ -66,10 +66,11 @@ export class QuestionsSectionComponent implements AfterViewInit {
   onOptionChange(option: string): void {
     if (this.selectedOption === option) {
       this.selectedOption = null;
+      this.questionsController.addResponse(null);
     } else {
       this.selectedOption = option;
+      this.questionsController.addResponse(option);
     }
 
-    this.questionsController.addResponse(option);
   }
 }

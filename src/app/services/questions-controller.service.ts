@@ -10,7 +10,7 @@ export class QuestionsControllerService {
   responseClient = Array(questions.length).fill(null)
   questionIndex = 0
 
-  addResponse(response: string) {
+  addResponse(response: any) {
     this.responseClient[this.questionIndex] = response
     console.log(this.responseClient);
   }
