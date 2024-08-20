@@ -1,0 +1,38 @@
+.headerExplore {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: #121c22;
+  font-size: 2rem;
+  text-align: center;
+  overflow: hidden;
+
+  .headerExplore__title {
+    color: white;
+    padding-top: 30px;
+  }
+
+  .planet {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: translateX(-50%);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+    background-image: url("https://i.postimg.cc/mDKV088v/image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Empieza en 0 grados */
+  }
+  100% {
+    transform: rotate(360deg); /* Rota a 360 grados */
+  }
+}
+}
