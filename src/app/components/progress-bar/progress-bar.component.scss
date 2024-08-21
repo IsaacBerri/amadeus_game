@@ -8,6 +8,9 @@ $letra:#b6c2cf;
   height: 100%;
   padding: 20px;
   background-color: $background;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .progress-text {
   margin-bottom: 10px;
