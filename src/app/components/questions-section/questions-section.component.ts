@@ -39,14 +39,6 @@ export class QuestionsSectionComponent implements AfterViewInit {
     this.checkedOption();
   };
 
-  finishForm = () => {
-    if (this.questionsController.responseClient.includes(null)) {
-      alert('Please answer all the questions');
-    }else{
-      this.router.navigate(['/travels/destinations']);
-    }
-  }
-
   checkedOption = () => {
     for (
       let i = 0;
@@ -67,25 +59,85 @@ export class QuestionsSectionComponent implements AfterViewInit {
 
   translatePreferences(category: string, value: string) {
     //@ts-ignore
-    return this.preferences[category][value] || value
+    return this.preferences[category][value] || value;
   }
 
-  findCategory(destinyValue: string, clientValue: string, category: string): boolean {
-    return destinyValue.toLowerCase() === this.translatePreferences(category, clientValue).toLowerCase();
+  findCategory(
+    destinyValue: string,
+    clientValue: string,
+    category: string
+  ): boolean {
+    return (
+      destinyValue.toLowerCase() ===
+      this.translatePreferences(category, clientValue).toLowerCase()
+    );
   }
-  
+
   destinyFilter(clientResponses: string[]) {
-    return this.destinations.filter(destiny => {
-      return(
-        this.findCategory(destiny.preferenciaDestino, clientResponses[0], 'ambiente') &&
-        this.findCategory(destiny.preferenciaClimatica, clientResponses[1], 'clima') &&
-        this.findCategory(destiny.preferenciaActividad, clientResponses[2], 'actividad') &&
-        this.findCategory(destiny.preferenciaAlojamiento, clientResponses[3], 'alojamiento') &&
-        this.findCategory(destiny.duracionViaje, clientResponses[4], 'duracion') &&
+    return this.destinations.filter((destiny) => {
+      return (
+        this.findCategory(
+          destiny.preferenciaDestino,
+          clientResponses[0],
+          'ambiente'
+        ) &&
+        this.findCategory(
+          destiny.preferenciaClimatica,
+          clientResponses[1],
+          'clima'
+        ) &&
+        this.findCategory(
+          destiny.preferenciaActividad,
+          clientResponses[2],
+          'actividad'
+        ) &&
+        this.findCategory(
+          destiny.preferenciaAlojamiento,
+          clientResponses[3],
+          'alojamiento'
+        ) &&
+        this.findCategory(
+          destiny.duracionViaje,
+          clientResponses[4],
+          'duracion'
+        ) &&
         this.findCategory(destiny.edad, clientResponses[5], 'edad')
-      )
-    })
+      );
+    });
   }
+
+  destinyValidation(clientResponses: string[]) {
+    const destinations = this.destinyFilter(clientResponses);
+
+    const destinationsWithTitle = destinations.map(destination => {
+      return {
+        ...destination,
+        title: 'Travel according to your dreams: Discover destinations made for you.'
+      }
+    })
+
+    const defaultResponse = {
+      posibleDestinoAmerica: 'Bora Bora, Polinesia Francesa',
+      posibleDestinoEuropa: 'Dubái, Emiratos Árabes',
+      title: 'Tus gustos son bastante exóticos, así que te sugerimos los siguientes destinos:'
+    };
+
+    return destinationsWithTitle.length > 0 ? destinationsWithTitle : defaultResponse;
+  }
+
+  finishForm = () => {
+    if (this.questionsController.responseClient.includes(null)) {
+      alert('Please answer all the questions');
+    } else {
+      const destinations = this.destinyValidation(
+        this.questionsController.responseClient
+      );
+
+      localStorage.setItem('destinations', JSON.stringify(destinations));
+
+      this.router.navigate(['/travels/destinations']);
+    }
+  };
 
   ngAfterViewInit() {
     const container = this.questionsSection.nativeElement;

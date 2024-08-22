@@ -34,10 +34,10 @@
       buttonText="Previous Question"
       [buttonFunction]="previousQuestion"
     />
-    {{ questionsController.questionIndex + 1 < questions.length ?
-    <app-button buttonText="Next Question" [buttonFunction]="nextQuestion"/>
-    :
-    <app-button buttonText="Submit Form" [buttonFunction]="finishForm"/>
-    }}
+    @if(questionsController.questionIndex + 1 < questions.length) {
+    <app-button buttonText="Next Question" [buttonFunction]="nextQuestion" />
+    } @else {
+    <app-button buttonText="Submit Form" [buttonFunction]="finishForm" />
+    }
   </section>
 </section>
