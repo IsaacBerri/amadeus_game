@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { DestinationComponent } from '@components/destination/destination.component';
+import { visitedDestinations } from '@utils/visited-destinations';
 
 @Component({
   selector: 'app-visited-destinations',
   standalone: true,
-  imports: [],
-  templateUrl: './visited-destinations.component.html',
+  imports: [DestinationComponent],
+templateUrl: './visited-destinations.component.html',
   styleUrl: './visited-destinations.component.scss'
 })
 export class VisitedDestinationsComponent {
-
+  Destinations = visitedDestinations
 }
