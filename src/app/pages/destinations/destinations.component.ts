@@ -1,17 +1,38 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { DestinationComponent } from '@components/destination/destination.component';
-import { QuestionsControllerService } from '@services/questions-controller.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-destinations',
   standalone: true,
-  imports: [DestinationComponent],
+  imports: [DestinationComponent, HttpClientModule],
   templateUrl: './destinations.component.html',
-  styleUrl: './destinations.component.scss'
+  styleUrl: './destinations.component.scss',
 })
 export default class DestinationsComponent {
-  responseClient = inject(QuestionsControllerService).responseClient
+  public destinations = JSON.parse(localStorage.getItem('destinations') || '');
 
-  public destinos = JSON.parse(localStorage.getItem('destinations') || '')
+  imgsDestinations = {
+    americaDestiny: "",
+    europaDestiny: "",
+  }
 
+  API_KEY = '41301808-e86fa23811faafdafbfc9238a';
+  categories = 'places, city, destinations';
+  constructor(public httpClient: HttpClient) {
+    this.getImgsDestinations();
+  }
+
+  getImgsDestinations() {
+    this.httpClient.get(
+      `https://pixabay.com/api/?key=${this.API_KEY}&q=${this.destinations[0].posibleDestinoEuropa}&image_type=photo&category=${this.categories}`
+    ).subscribe((data: any) => {
+      this.imgsDestinations.europaDestiny = data.hits[0].webformatURL;
+    })
+    this.httpClient.get(
+      `https://pixabay.com/api/?key=${this.API_KEY}&q=${this.destinations[0].posibleDestinoAmerica}&image_type=photo&category=${this.categories}`
+    ).subscribe((data: any) => {
+      this.imgsDestinations.americaDestiny = data.hits[0].webformatURL;
+    })
+  }
 }

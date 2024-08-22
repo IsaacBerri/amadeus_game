@@ -1,8 +1,19 @@
 <main class="main">
-    <h2 class="title">Destinations</h2>
-    <p class="text">Travel according to your dreams: <span>Discover destinations made for you.</span></p>
-    <section class="destinations-container">
-        <app-destination/>
-        <app-destination/>
-    </section>
+  <h2 class="title">Destinations</h2>
+  <p class="text">
+    Travel according to your dreams:
+    <span>Discover destinations made for you.</span>
+  </p>
+  <section class="destinations-container">
+    <app-destination
+      img="{{ imgsDestinations.americaDestiny }}"
+      name="{{ destinations[0].posibleDestinoAmerica }}"
+      text="hola"
+    />
+    <app-destination
+      img="{{ imgsDestinations.europaDestiny }}"
+      name="{{ destinations[0].posibleDestinoEuropa }}"
+      text="hola2"
+    />
+  </section>
 </main>
