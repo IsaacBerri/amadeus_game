@@ -1,0 +1,20 @@
+.btn{
+    width: auto;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-previous{
+    background-color: grey;
+    color: white;
+}
+.btn-next{
+    background-color: #21A3ED;
+    color: white;
+}

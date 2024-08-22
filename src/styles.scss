@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+:root {
+    --navbar-bg-color: #ffffff;
+    --navbar-text-color: #000000;
+  }
+
+body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    height: 100vh;
+}
+body.dark-theme {
+    --navbar-bg-color: #121C22;
+    --navbar-text-color: #ffffff;
+  }

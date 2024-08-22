@@ -1,0 +1,43 @@
+<section class="questions-section" #questionsSection>
+  <div class="light"></div>
+  <h3 class="title">
+    {{ questions[questionsController.questionIndex].title }}
+  </h3>
+  <p class="description">
+    {{ questions[questionsController.questionIndex].text }}
+  </p>
+  <form class="options-container" #optionsContainer>
+    <app-input-response
+      labelValue="{{
+        questions[questionsController.questionIndex].options[0].value
+      }}"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+    <app-input-response
+      labelValue="{{
+        questions[questionsController.questionIndex].options[1].value
+      }}"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+    <app-input-response
+      labelValue="{{
+        questions[questionsController.questionIndex].options[2].value
+      }}"
+      [selectedOption]="selectedOption"
+      (selectedOptionChange)="onOptionChange($event)"
+    />
+  </form>
+  <section class="btn-container">
+    <app-button
+      buttonText="Previous Question"
+      [buttonFunction]="previousQuestion"
+    />
+    @if(questionsController.questionIndex + 1 < questions.length) {
+    <app-button buttonText="Next Question" [buttonFunction]="nextQuestion" />
+    } @else {
+    <app-button buttonText="Submit Form" [buttonFunction]="finishForm" />
+    }
+  </section>
+</section>
