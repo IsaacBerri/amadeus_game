@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-destination',
@@ -8,6 +8,9 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./destination.component.scss'],
 })
 export class DestinationComponent implements AfterViewInit {
+  @Input({ required: true }) img!: string;
+  @Input({ required: true }) name!: string;
+  @Input({ required: true }) text!: string;
   @ViewChild('destination') destination!: ElementRef;
 
   ngAfterViewInit(): void {
