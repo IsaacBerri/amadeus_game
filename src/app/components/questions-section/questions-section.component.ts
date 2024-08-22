@@ -5,6 +5,7 @@ import {
   AfterViewInit,
   inject,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuestionsControllerService } from '@services/questions-controller.service';
 import { ButtonComponent } from '@utils/button/button.component';
 import { InputResponseComponent } from '@utils/input-response/input-response.component';
@@ -22,6 +23,7 @@ export class QuestionsSectionComponent implements AfterViewInit {
   @ViewChild('questionsSection') questionsSection!: ElementRef;
   @ViewChild('optionsContainer') optionsContainer!: ElementRef;
   questionsController = inject(QuestionsControllerService);
+  router = inject(Router);
   questions = this.questionsController.questions;
   selectedOption!: any;
   destinations = mockDestinations;
@@ -36,6 +38,14 @@ export class QuestionsSectionComponent implements AfterViewInit {
     this.questionsController.nextQuestion();
     this.checkedOption();
   };
+
+  finishForm = () => {
+    if (this.questionsController.responseClient.includes(null)) {
+      alert('Please answer all the questions');
+    }else{
+      this.router.navigate(['/travels/destinations']);
+    }
+  }
 
   checkedOption = () => {
     for (
