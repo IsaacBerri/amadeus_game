@@ -41,12 +41,10 @@ export class CarrouselImgComponent implements OnInit, OnDestroy {
   prev(): void {
     this.currentIndex =
       this.currentIndex > 0 ? this.currentIndex - 1 : this.items.length - 1;
-    console.log({ currentIndex: this.currentIndex });
   }
 
   next(): void {
     this.currentIndex =
       this.currentIndex < this.items.length - 1 ? this.currentIndex + 1 : 0;
-    console.log({ currentIndex: this.currentIndex });
   }
 }
