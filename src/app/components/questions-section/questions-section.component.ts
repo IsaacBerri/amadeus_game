@@ -109,20 +109,26 @@ export class QuestionsSectionComponent implements AfterViewInit {
   destinyValidation(clientResponses: string[]) {
     const destinations = this.destinyFilter(clientResponses);
 
-    const destinationsWithTitle = destinations.map(destination => {
+    const destinationsWithTitle = destinations.map((destination) => {
       return {
         ...destination,
-        title: 'Travel according to your dreams: Discover destinations made for you.'
-      }
-    })
+        title:
+          'Travel according to your dreams: Discover destinations made for you.',
+      };
+    });
 
-    const defaultResponse = {
-      posibleDestinoAmerica: 'Bora Bora, Polinesia Francesa',
-      posibleDestinoEuropa: 'Dubái, Emiratos Árabes',
-      title: 'Tus gustos son bastante exóticos, así que te sugerimos los siguientes destinos:'
-    };
+    const defaultResponse = [
+      {
+        posibleDestinoAmerica: 'Bora Bora, Polinesia Francesa',
+        posibleDestinoEuropa: 'Dubái, Emiratos Árabes',
+        title:
+          'Tus gustos son bastante exóticos, así que te sugerimos los siguientes destinos:',
+      },
+    ];
 
-    return destinationsWithTitle.length > 0 ? destinationsWithTitle : defaultResponse;
+    return destinationsWithTitle.length > 0
+      ? destinationsWithTitle
+      : defaultResponse;
   }
 
   finishForm = () => {
