@@ -11,4 +11,7 @@ import { QuestionsControllerService } from '@services/questions-controller.servi
 })
 export default class DestinationsComponent {
   responseClient = inject(QuestionsControllerService).responseClient
+
+  public destinos = JSON.parse(localStorage.getItem('destinations') || '')
+
 }
