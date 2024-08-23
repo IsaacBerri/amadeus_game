@@ -47,4 +47,10 @@
     text-align: center;
     margin-top: 5px; /* Espacio entre el párrafo y el texto centrado */
   }
-  
+
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
