@@ -12,7 +12,6 @@ export class QuestionsControllerService {
 
   addResponse(response: any) {
     this.responseClient[this.questionIndex] = response
-    console.log({clientResponse: this.responseClient});
   }
 
   nextQuestion() {
